@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+
+body{
+    padding-top:50px;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 14px;
+}
+
+#isotopeContainer{
+    position: relative;
+}
+
+/* zooming */
+.zoomimg {
+    display: inline-block;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    /*transition: all .5s ease-in-out;*/
+    position: relative;
+    overflow:hidden;
+    z-index: 100;
+}
+
+/*.thumbnail{
+	overflow: hidden;
+}*/
+
+.thumb{
+    transition: background 0.4s, box-shadow 0.4s;
+}
+
+#myNav{
+    width: 100vw;
+}
+
+.container.navCenter{
+    width:300px;
+}
+
+#page-title {
+    text-align: center;
+    font-weight: bolder;
+    font-size: 2em;
+    margin-bottom: 15px;
+}
+
+#sort-bar{
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/*.zoomimg:hover {
+    cursor: pointer;
+}
+
+.img-responsive:hover{
+	 cursor: pointer;
+	 transform: scale(1.1);
+	 overflow:hidden;
+}*/
+
+/* add overlay 
+.zoomimg:after {
+    position: absolute;
+    background-color: rgba(0,0,0,.35);
+    content: 'Click Here';
+    font-family: sans-serif;
+    padding-top: 250px;
+    font-size: 2em;
+    color: #fff;
+    top:  0;
+    left: 0;
+    width: 260px;
+    height: 375px;
+    opacity: 0;
+    transition: opacity .5s linear;
+    box-sizing: border-box;
+}
+.zoomimg:hover:after {
+    opacity: 1;
+}*/
