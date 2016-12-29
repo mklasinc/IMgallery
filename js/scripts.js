@@ -1,9 +1,41 @@
-
-var classArray = ["mashups","other","digital","physical","health","data-visualization","music"];
+//all the arrays
 var categTagList = ["mashups","other","digital","physical","health","data-visualization","music"];
 var categList = ["class","custom","tech"];
-var objectArray = [];
+var tagArray = [];
+var categArray = [];
 
+var tagObjArray = [
+  {
+    ctg: "class",
+    tag: "mashups"
+  },
+  {
+    ctg: "class",
+    tag: "other"
+  },
+    {
+    ctg: "tech",
+    tag: "digital"
+  },
+    {
+    ctg: "tech",
+    tag: "physical"
+  },
+    {
+    ctg: "other",
+    tag: "health"
+  },
+    {
+    ctg: "other",
+    tag: "data-visualization"
+  },
+    {
+    ctg: "other",
+    tag: "music"
+  }
+];
+
+//create the grid object
 var $grid = $('#isotopeContainer').isotope({
 // options
 itemSelector: '.thumb',
@@ -16,15 +48,15 @@ getSortData: {
 
 function applyFilter(filterCategory, filterName){
   //clear everything
-  //console.log("we are applying filters!");
-  for(var i = 0; i < classArray.length; i++){
-    var hideSelector = '#filter-' + classArray[i];
+  for(var i = 0; i < categTagList.length; i++){
+    var hideSelector = '#filter-' + categTagList[i];
     $(hideSelector).removeClass("toggle-click").find('.x-icon').addClass('hidden');
-    //console.log("hidden filter: " + hideSelector);
   };
 
+  //style
   var selector = '#filter-' + filterName;
   $(selector).addClass("toggle-click").find('.x-icon').removeClass('hidden');
+  //filter
   $grid.isotope({
     // filter element with numbers greater than 50
     filter: function() {
@@ -36,6 +68,22 @@ function applyFilter(filterCategory, filterName){
   });
 };
 
+function clearTagArray(){
+  for (var i = 0; i < tagArray.length; i++) {
+    $(tagArray[i].id).data("toggleBool",false);
+    $(tagArray[i].id).removeClass("toggle-click").find('.x-icon').addClass('hidden');
+  };
+}
+
+function clearCategArray(){
+  for (var i = 0; i < categArray.length; i++) {
+    //console.log(categList[i].id);
+    $(categArray[i].id).removeClass("toggle-click").addClass("pink-hover");
+    $(categArray[i].tag).addClass("hidden");
+  };
+}
+
+//reduce this
 function applyNoFilter(filterName){
   var selector = '#filter-' + filterName;
   //console.log(selector);
@@ -51,34 +99,23 @@ function applyNoFilter(filterName){
 /*----------------------------*/
 $(document).ready(function(){
   //load isotope images
+  console.log("We are ready!");
   $grid.imagesLoaded().progress( function() {
     $grid.isotope('layout');
   });
-  //categories
-  var classroom = new Category("class");
-  classroom.click();
-  var technology = new Category("tech");
-  technology.click();
-  var custom = new Category("custom");
-  custom.click();
-  //tags
-  var tagDigital = new Tag("tech","digital");
-  tagDigital.click();
-  var tagPhysical = new Tag("tech","physical");
-  tagPhysical.click();
-  var tagMashups = new Tag("class","mashups");
-  tagMashups.click();
-  var tagOther = new Tag("class","other");
-  tagOther.click();
-  var tagDataViz = new Tag("custom","data-visualization");
-  tagDataViz.click();
-  var tagHealth = new Tag("custom","health");
-  tagHealth.click();
-  var tagMusic = new Tag("custom","music");
-  tagMusic.click();
+  //create category objects
+  for(var i in categList){
+    var ctgObj = new Category(categList[i]);
+    ctgObj.click();
+  };
+  //create tag objects
+  for(var i in tagObjArray){
+    var tagObj = new Tag(tagObjArray[i].ctg,tagObjArray[i].tag);
+    tagObj.click();
+  };
 
   /*---------------SORTS--------------------------------------------------*/
-  //random sort
+  //RANDOM SORT
 	$('#filter-random').click(function(){
   	console.log("Yes, we are pressed!");
     $grid.isotope({ 
@@ -88,6 +125,8 @@ $(document).ready(function(){
 	});
   //no sort
   $('#filter-none').click(function(){
+    clearTagArray();
+    clearCategArray();
     $grid.isotope({
       filter: '*'
     });

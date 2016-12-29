@@ -5,8 +5,8 @@ function Tag(category,selector){
     //this.boolean = false;
 
     this.click = function(){
+      console.log("We are clicked!");
       //push the object into an array
-      objectArray.push(this);
       //set the toggleBool to false
       $(this.id).data("toggleBool",false);
       //create variables so that the JS object's variables will not interfere with jquery's this
@@ -19,8 +19,8 @@ function Tag(category,selector){
           console.log("YAY");
           applyFilter(rightCtg,rightTag);
           //set toggle bools of all other objects to false
-          for (var i = 0; i < objectArray.length; i++) {
-            $(objectArray[i].id).data("toggleBool",false);
+          for (var i = 0; i < tagArray.length; i++) {
+            $(tagArray[i].id).data("toggleBool",false);
           };
           //set toggle bool of the active object to true
           $(rightID).data("toggleBool",true);
@@ -34,4 +34,6 @@ function Tag(category,selector){
         }
     });
   }
+  //create a collection of tags
+  tagArray.push(this);
 };
