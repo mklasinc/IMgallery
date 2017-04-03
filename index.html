@@ -8,245 +8,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="pinterest" content="nopin" />
 
     <title>NYUAD IM GALLERY</title>
-
     <!-- Bootstrap Core CSS -->
     <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet">
-
     <!-- Custom CSS -->
     <link href="css/thumbnail-gallery.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <link href="css/responsive.css" rel="stylesheet">
 
 </head>
 
 <body>
+    <div id="overlays"></div>
 
-    <!-- Navigation -->
-    <nav id="myNav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container navCenter">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <!--<div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Start Bootstrap</a>
-            </div>-->
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <!--<div id="nav-icons">
-                    <a href='https://github.com/nyuad-im' target="_blank" class="nav-link"><img src='img/github.png' class='icon-link'></a>
-                    <a href='https://www.facebook.com/groups/IMNYUAD/' target="_blank" class="nav-link"><img src='img/facebook.png' class='icon-link'></a>
-                    <a href='https://twitter.com/NYUAD_IM' target="_blank" class="nav-link"><img src='img/twitter.png' class='icon-link'></a>
-                    <a href='https://www.flickr.com/photos/129994495@N05/' target="_blank" class="nav-link"><img src='img/flickr.png' class='icon-link'></a>
-                </div>-->
-                
-                <!--<ul class="nav navbar-nav">
-                    <li>
-                        <a href="#">About</a>
-                    </li>
-                    <li>
-                        <a href="#">Services</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
-                </ul>-->
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-    <!--
-    <div class="col-lg-12">
-        <h1 class="page-header" id="title">Thumbnail Gallery</h1>
-    </div>-->
-
-    <div id="page-title">IM PROJECTS GALLERY</div>
-    
-    <!-- Page Content -->
+    <div id="page-title"><a class="underline" href="http://nyuad.im" target="_blank">IM</a> PROJECTS GALLERY</div>
 
     <div id="rule" class="container myGrid">
 
-        <div id="sort-bar">
-            <!--<button id="random-sort">Random Sort</button>
-            <button id="class-sort">Class Sort</button>
-            <button id="class-filter">Filter my data</button>-->
-            <a class="filter-toggle pink-hover" id="filter-class">Class</a>
-            <a class="filter-toggle pink-hover" id="filter-tech">Technology</a>
-            <a class="filter-toggle pink-hover" id="filter-custom">Custom</a>
-            <a class="filter-toggle pink-hover float-right" id="filter-random">Yolo</a><span class="float-right margin-top">/</span>  
-            <a class="filter-toggle pink-hover float-right" id="filter-none">See All</a>
-        </div>
-
-        <div id="tags-bar">
-            <div class="tags tag-class hidden" id="filter-mashups">Mashups
-                <img src="img/myX.png" class="x-icon hidden">
+        <div id="interface">
+            <div id="sort-bar">
+                <ul id="filters"></ul>
+                <ul id="sorts">
+                    <li><a class="pink-hover" id="filter-random">Yolo</a></li>  
+                    <li><a class="pink-hover" id="filter-none">All</a></li>
+                </ul>
             </div>
-            <div class="tags tag-class hidden" id="filter-other">Other
-                <img src="img/myX.png" class="x-icon hidden">
-            </div>
-            <div class="tags tag-tech hidden" id="filter-physical">Physical
-                <img src="img/myX.png" class="x-icon hidden">
-            </div>
-            <div class="tags tag-tech hidden" id="filter-digital">Digital
-                <img src="img/myX.png" class="x-icon hidden">
-            </div>
-            <div class="tags tag-custom hidden" id="filter-music">Music
-                <img src="img/myX.png" class="x-icon hidden">
-            </div>
-            <div class="tags tag-custom hidden" id="filter-data-visualization">Data Visualization
-                <img src="img/myX.png" class="x-icon hidden">
-            </div>
-            <div class="tags tag-custom hidden" id="filter-health">Soft Circuits
-                <img src="img/myX.png" class="x-icon hidden">
-            </div>
+            <ul id="tags-bar"></ul>
         </div>
 
         <div id="isotopeContainer">
 
-            <div class="row">
-                <div class="col-xl-3 col-lg-4 col-md-4 col-xs-6 thumb" data-class="other" data-tech="physical" data-custom="health">
-                    <div class="overlay-container">
-                            <img class="img-responsive" src="img/concrete.jpg" alt="">
-                            <div class="overlay-box">
-                               <a class="overlay-text" href="http://cargocollective.com/musique-concrete" target="_blank">VIEW</a>
-                                <div class="overlay-project-name">
-                                    <p class="font-title">CONCRÈTE</p>
-                                    <p>by Fah Daengdej</p>
-                                </div>
-                                <div class="overlay-project-description">
-                                    Paper interface DIY kit that aims to foster creative ways of noticing everyday sounds’ musical and narrative potential.
-                                </div>
-                                <div class="overlay-project-tags">
-                                    #physical #softcircuits
-                                </div>
-                            </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-4 col-xs-6 thumb" id="abhi" data-class="mashups" data-tech="digital" data-custom="music">
-                    <div class="overlay-container">
-                            <img class="img-responsive" src="img/Abhi/img.png" alt="">
-                            <div class="overlay-box">
-                                <a class="overlay-text" href="http://breedingrhythms.herokuapp.com/" target="_blank">VIEW</a>
-                                <div class="overlay-project-name">
-                                    <p class="font-title">BREEDING RHYTHMS</p>
-                                    <p>by Abhimanyu Vasishth</p>
-                                </div>
-                                <div class="overlay-project-description">
-                                    New generations of 8 rhythms each are created based on the rhythms you like.
-                                </div>
-                                <div class="overlay-project-tags">
-                                    #mashups, #digital, #music, #genetic-algorithms
-                                </div>
-                            </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-4 col-xs-6 thumb" data-class="other" data-tech="digital" data-custom="data-visualization">
-                    <div class="overlay-container">
-                            <img class="img-responsive" src="img/Craig/img.png" alt="">
-                            <div class="overlay-box">
-                               <a class="overlay-text" href="https://imaginescience.herokuapp.com/" target="_blank">VIEW</a>
-                                <div class="overlay-project-name">
-                                    <p class="font-title">IMAGINE SCIENCE 2015</p>
-                                    <p>by Craig Protzel</p>
-                                </div>
-                                <div class="overlay-project-description">
-                                    Interactive collaborative drawing app built with p5.js and socket.io. What you draw appears instantly on others' screens
-                                </div>
-                                <div class="overlay-project-tags">
-                                    #mashups, #digital, #health, #data-visualization
-                                </div>
-                            </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-4 col-xs-6 thumb" data-class="mashups" data-tech="digital" data-custom="data-visualization">
-                    <div class="overlay-container">
-                            <img class="img-responsive" src="img/Shujaat/img.png" alt="">
-                            <div class="overlay-box">
-                               <a class="overlay-text" href="http://www.msm622.nyuad.im/MalariaPersists/" target="_blank">VIEW</a>
-                                <div class="overlay-project-name">
-                                    <p class="font-title">MALARIA PERSISTS</p>
-                                    <p>by Shujaat Mirza</p>
-                                </div>
-                                <div class="overlay-project-description">
-                                    Mashups project that visualises WHO data about Malaria cases from 2000 onwards
-                                </div>
-                                <div class="overlay-project-tags">
-                                    #mashups, #digital, #data-visualization
-                                </div>
-                            </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-4 col-xs-6 thumb" data-class="other" data-tech="physical" data-custom="data-visualization">
-                    <div class="overlay-container">
-                            <img class="img-responsive" src="img/Luis/img.png" alt="">
-                            <div class="overlay-box">
-                               <a class="overlay-text" href="http://www.materialfictions.com/capstone" target="_blank">VIEW</a>
-                                <div class="overlay-project-name">
-                                    <p class="font-title">TLÖNATOR</p>
-                                    <p>by Luis Morales Navarro</p>
-                                </div>
-                                <div class="overlay-project-description">
-                                    System that translates texts from English to Tlönized English
-                                </div>
-                                <div class="overlay-project-tags">
-                                    #mashups, #digital, #data-visualization
-                                </div>
-                            </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-4 col-xs-6 thumb" data-class="other" data-tech="digital" data-custom="">
-                    <div class="overlay-container">
-                            <img class="img-responsive" src="img/cornelius_wendell.png" alt="">
-                            <div class="overlay-box">
-                               <a class="overlay-text" href="http://nme247.nyuad.im/Animation%20project/Animation.html" target="_blank">VIEW</a>
-                                <div class="overlay-project-name">
-                                    <p class="font-title">CORNELIUS</p>
-                                    <p>by Maddie Moore, Nada ElAzhary, Reine Defranco</p>
-                                </div>
-                                <div class="overlay-project-description">
-                                    Animation featuring two little creatures:Cornelius and his best friend, Wendell
-                                </div>
-                                <div class="overlay-project-tags">
-                                    #digital #animation #commlab
-                                </div>
-                            </div>
-                    </div>
-                </div>
+            <div class="row"></div>
+        </div>
+    </div>
 
-                <!--
-                <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                    <a class="thumbnail" href="#">
-                        <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                    </a>
-                </div>-->
-            </div>
-        </div>
-    </div>
-    <div id="my-canvas">
-      <!-- Our sketch will go here! -->
-    </div>
-    <!-- /.container -->
-    <!-- Footer -->
-    <footer>
-        <div class="footer">
-            <div class="col-lg-12">
-                <p>Made by Miha Klasinc. Images of Ms. Clinton and Mr. Trump by Washington Post</p>
-            </div>
-        </div>
-    </footer>
+    </div>-->
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
@@ -255,11 +54,11 @@
     <script src="js/bootstrap.js"></script>
     <script src="js/isotope.pkgd.js"></script>
     <script src="js/imagesLoaded.pkgd.min.js"></script>
-    <script src="js/p5.min.js"></script>
+    <!--<script src="js/p5.min.js"></script>-->
     <script src="js/Tag.js"></script>
     <script src="js/Category.js"></script>
     <script src="js/scripts.js"></script>
-    <!--<script src="sketch.js"></script>-->
+    <!--<script src="js/sketch.js"></script>-->
 
 </body>
 

@@ -1,31 +1,31 @@
 // CATEGORY OBJECT / /// / / / / / / / / / / / / / / / / / / / / / / / / / /
   function Category(selector){
-    //e.g. filter-class - governs functionality of category buttons
-    this.id = "#filter-" + selector;
-    //e.g. .tag-class - governs visibility of tags
-    this.tag = ".tag-" + selector;
+    //console.log("yeeessss!");
+    this.ctg = selector;
 
+    this.capitalizeFirstLetter = function(string){
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    };
+
+   
     //handle visibility + style
-    this. = function(){
-      //create a variable to distinguish between the object's 'this' and jquery's 'this'
-      var rightTag = this.tag;
-      //listen for a click
-      $(this.id).click(function(){
-        console.log("We are clicked!");
-        //'from now on, this is now a jquery this
+    this.createDomElement = function(){
+      //console.log("yeeessss!");
+      var htmlString = '';
+      htmlString += '<li><a class="ctg pink-hover"';
+      htmlString += 'id=filter-' + this.ctg + '>' + this.capitalizeFirstLetter(this.ctg) + '</a></li>'; 
 
-        //categList stores all category names*** change it to categArray
-        for(var i = 0; i < categList.length; i++){
+      var curObj = this;
+      curObj.element = $(htmlString).prependTo('#filters');
 
-        //clean up all the category buttons
-        $("#filter-" + categList[i]).removeClass("toggle-click").addClass("pink-hover");
-        //hide all the tags
-        $(".tag-" + categList[i]).addClass("hidden");
-        };
-        //add purple button to the clicked button
-        $(this).toggleClass("pink-hover toggle-click");
-        //show tags matching the category
-        $(rightTag).removeClass("hidden");
+      curObj.element.click(function(e){
+
+        var objID = $(e.target).attr("id");
+        $(".ctg").removeClass("toggle-click").addClass("pink-hover");
+        $(".tags").addClass("hidden");
+        $(e.target).toggleClass("pink-hover toggle-click");
+        $(".tag-" + curObj.ctg).removeClass("hidden");
+
       });
     };
     //push all the objects into an array

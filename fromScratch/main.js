@@ -6,12 +6,7 @@ $('.grid').isotope({
 
 var $grid = $('.grid').isotope({
   getSortData: {
-    //name: '.name', // text from querySelector
     category: '[data-category]', // value of attribute
-    /*weight: function( itemElem ) { // function
-      var weight = $( itemElem ).find('.weight').text();
-      return parseFloat( weight.replace( /[\(\)]/g, '') );
-    }*/
   }
 });
 
