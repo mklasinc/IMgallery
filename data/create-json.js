@@ -6,8 +6,8 @@ var r1 = readline.createInterface(process.stdin,process.stdout);
 
 
 /*
-//EMPTY PERSON
-var person1 = {
+//TEMPLATE
+var x = {
 
 	name: " ",
 	author: " ",
@@ -19,8 +19,12 @@ var person1 = {
 	img_url:
 
 };
+pushToArray(x);
 */
 
+function pushToArray(obj){
+	objArray.push(obj);
+}
 
 var person1 = {
 
@@ -36,6 +40,7 @@ var person1 = {
 	index: "1"
 
 };
+pushToArray(person1);
 
 var person2 = {
 
@@ -51,6 +56,7 @@ var person2 = {
 	index: "2"
 
 };
+pushToArray(person2);
 
 var person3 = {
 
@@ -66,6 +72,7 @@ var person3 = {
 	index: "3"
 
 };
+pushToArray(person3);
 
 
 var person4 = {
@@ -81,6 +88,7 @@ var person4 = {
 	img_url: "../img/Shujaat/img.png",
 	index: "4"
 };
+pushToArray(person4);
 
 var person5 = {
 
@@ -96,6 +104,7 @@ var person5 = {
 	index: "5"
 
 };
+pushToArray(person5);
 
 var person6 = {
 
@@ -111,32 +120,27 @@ var person6 = {
 	index: "6"
 
 };
+pushToArray(person6);
 
-
-
-
-objArray.push(person1,person2,person3,person4,person5,person6);
 var jsonFile = JSON.stringify(objArray);
 
 
 
-
-
-if(!fs.existsSync('myData1.json')){
-	fs.writeFile('myData1.json', jsonFile, function (err) {
+if(!fs.existsSync('projects-data.json')){
+	fs.writeFile('projects-data.json', jsonFile, function (err) {
   	if (err) return console.log(err);
   	console.log("we created a new file!");
 	});
 }else{
 	r1.question("The file already exists. Do you want to overwrite it? (Y/N)", function(answer){
 		if(answer.toLowerCase().trim() == 'y'){
-			fs.writeFile('myData1.json', jsonFile, function (err) {
+			fs.writeFile('projects-data.json', jsonFile, function (err) {
 				if (err) return console.log(err);
 				console.log("we overwrote the data file");
 				r1.close();
 			});
 		}else{
-			console.log("user is undecided");
+			console.log("you are undecided");
 			r1.close();
 		};
 
@@ -150,10 +154,3 @@ r1.on('close',function(){
 	console.log("closing the interface");
 	process.exit();
 });
-
-
-/*fs.readFile('myData.json', function(err,data){
-  if (err) throw err;
-  var jsObj = JSON.parse(data);
-  console.log(jsObj[0].name);
-});*/

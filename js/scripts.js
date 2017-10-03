@@ -1,8 +1,9 @@
 //all the arrays
 var categTagList = ["mashups","other","digital","physical","health","data-visualization","music"];
 var categList = ["class","custom","tech"];
-var tagArray = [];
-var categArray = [];
+var tagObjArray = [];
+var categObjArray = [];
+var $grid;
 
 var tagObjArray = [
   {
@@ -35,7 +36,30 @@ var tagObjArray = [
   }
 ];
 
-var $grid;
+/*$.getJSON("data/tags-data.json", function(data){
+  console.log(data);
+});*/
+
+var ctgList = [];
+
+function findUniqVals(){
+  var i = 0;
+  tagObjArray.forEach(function(d){
+
+    if(ctgList[i] !== d.ctg){
+      console.log(d.ctg);
+      if(ctgList.length !== 0){
+        i++;
+      }
+      ctgList.push(d.ctg);
+    };
+    tagObjArray
+
+  });
+};
+
+findUniqVals();
+
 
 
 
@@ -43,8 +67,7 @@ var $grid;
 /*----------TAG FILTERS------------------*/
 
 function applyFilter(filterCategory, filterName){
-  console.log(filterName);
-  //console.log($('.thumb').data('custom').split(" "));
+  //console.log(filterName);
   //clear everything
   for(var i = 0; i < categTagList.length; i++){
     var hideSelector = '#filter-' + categTagList[i];
@@ -75,20 +98,20 @@ function applyFilter(filterCategory, filterName){
   });
 };
 
-function clearTagArray(){
-  for (var i = 0; i < tagArray.length; i++) {
-    var tagId = '#filter-' + tagArray[i].tag;
+function cleartagObjArray(){
+  for (var i = 0; i < tagObjArray.length; i++) {
+    var tagId = '#filter-' + tagObjArray[i].tag;
     //console.log(tagId);
     $(tagId).data("toggleBool", false);
     $(tagId).removeClass("toggle-click").find('.x-icon').addClass('hidden');
   };
 }
 
-function clearCategArray(){
-  for (var i = 0; i < categArray.length; i++) {
-    //console.log(categArray[i].ctg);
-    var categId = '#filter-' + categArray[i].ctg;
-    var tagClass = '.tag-' + categArray[i].ctg;
+function clearcategObjArray(){
+  for (var i = 0; i < categObjArray.length; i++) {
+    //console.log(categObjArray[i].ctg);
+    var categId = '#filter-' + categObjArray[i].ctg;
+    var tagClass = '.tag-' + categObjArray[i].ctg;
     $(categId).removeClass("toggle-click").addClass("pink-hover");
     $('#tags-bar').find(tagClass).addClass("hidden");
   };
@@ -216,7 +239,7 @@ $(document).ready(function(){
 
   var windowWidth = $(window).width();  
   //method to create HTML elements
-  $.getJSON('../prepWork/myData1.json', function(data){
+  $.getJSON('../data/projects-data.json', function(data){
     // iterate through person objects
     for(var i = 0; i < data.length; i++){
       if(windowWidth < 500){
@@ -269,8 +292,8 @@ $(document).ready(function(){
       $(e.target).css("background-color","transparent");
     }, 120);
 
-    clearTagArray();
-    clearCategArray();
+    cleartagObjArray();
+    clearcategObjArray();
     $grid.isotope({
       filter: '*'
     });
